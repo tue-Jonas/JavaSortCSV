@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the path of the CSV file:");
+        System.out.println("\nEnter the path of the CSV file:");
         String csvFilePath = scanner.nextLine();
 
         try {
@@ -20,21 +20,21 @@ public class Main {
             return;
         }
 
-        System.out.println("Enter the column index (starting from 0):");
+        System.out.println("\nEnter the column index (starting from 0):");
         int columnIndex = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
-        System.out.println("Enter the name of the output file:");
+        System.out.println("\nEnter the name of the output file:");
         String outputFileName = scanner.nextLine();
 
-        System.out.println("Select sorting algorithm:\n1. Mergesort\n2. Quicksort");
+        System.out.println("\nSelect sorting algorithm:\n1. Mergesort\n2. Quicksort");
         String algorithmChoice = scanner.nextLine();
 
         try {
             List<String> data = readColumnFromCSV(csvFilePath, columnIndex);
             sortData(data, algorithmChoice);
             writeSortedDataToFile(data, outputFileName);
-            System.out.println("Data sorted and saved to " + outputFileName);
+            System.out.println("\nData sorted and saved to " + outputFileName);
         } catch (IOException e) {
             System.err.println("File error: " + e.getMessage());
         } catch (IllegalArgumentException e) {
@@ -49,7 +49,7 @@ public class Main {
             String firstLine = reader.readLine();
             if (firstLine != null) {
                 String[] headers = firstLine.split(",");
-                System.out.println("Available columns:");
+                System.out.println("\nType in the column index you want to sort by:");
                 for (int i = 0; i < headers.length; i++) {
                     System.out.println(i + ": " + headers[i]);
                 }
